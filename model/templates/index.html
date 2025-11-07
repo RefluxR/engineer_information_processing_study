@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- 아이콘/애니메이션/하이라이터 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+    <!-- Prism 테마 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" crossorigin="anonymous" />
+    <title>test</title>
+</head>
+<body>
+    <!-- 에디터 테마 선택 버튼 (순서: 1 white, 2 eye-protect, 3 black, 4 vscode) -->
+    <div id="editor_theme_controls" class="editor-controls">
+        <button class="theme-btn" data-theme="light">밝은 (흰/검)</button>
+        <button class="theme-btn" data-theme="solarized">눈보호 (연노랑/검)</button>
+        <button class="theme-btn" data-theme="dark">어두운 (검/흰)</button>
+        <button class="theme-btn" data-theme="vscode">VSCode (Dark+)</button>
+    </div>
+
+    <!-- 코드 영역: Prism 하이라이팅용 <pre><code> 구조 -->
+    <div id="code_wrapper" class="card shadowed rounded editor-theme-dark" style="margin:20px;">
+        <pre id="code_segment" class="card-inner"><code id="code_display" class="language-none"></code></pre>
+    </div>
+
+    <div id='select_language' class='language'>
+        <!-- 버튼: data-lang 유지 -->
+        <button id='select_java' class='language-btn java' data-lang='java'><i class="fa-brands fa-java"></i> JAVA</button>
+        <button id='select_c' class='language-btn c' data-lang='c'><i class="fa-solid fa-c"></i> C</button>
+        <button id='select_python' class='language-btn python' data-lang='python'><i class="fa-brands fa-python"></i> PYTHON</button>
+    </div>
+
+    <!-- Prism 스크립트(언어별 컴포넌트 포함) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js" crossorigin="anonymous"></script>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

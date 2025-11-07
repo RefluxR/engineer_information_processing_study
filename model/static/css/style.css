@@ -1,0 +1,419 @@
+/* 색상 변수 설정: 밝은 톤 중심 */
+:root {
+  --primary-color: #f9f9f9;   /* 기본 배경 */
+  --accent-color: #ffffff;    /* 카드/박스 배경 */
+  --highlight-color: #e0f7fa; /* 포인트 색상 */
+  --border-color: #d0d0d0;    /* 테두리 색상 */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* 그림자 */
+  /* 언어별 색상 */
+  --java-start: #ff7a18;
+  --java-end: #af002d;
+  --c-start: #2b8cff;
+  --c-end: #0057d9;
+  --py-start: #2ecc71;
+  --py-end: #1b9e5a;
+}
+
+/* 전체 레이아웃 기본 */
+body {
+  margin: 30px; /* 수정: 단위 추가 */
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--primary-color);
+  color: #333;
+}
+
+/* 곡선 디자인을 위한 공통 클래스 */
+.rounded {
+  border-radius: 20px; /* 곡선 정도 */
+}
+
+/* 입체감 있는 테두리 */
+.shadowed {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* 카드/박스 기본 스타일 */
+.card {
+  background: var(--accent-color);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* 버튼 스타일 */
+button {
+  background: var(--highlight-color);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #b2ebf2;
+  transform: translateY(-2px);
+}
+
+/* 버튼 스타일 업데이트 */
+.language {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.language-btn {
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 14px;
+  padding: 10px 18px;
+  border: none;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(0);
+}
+
+/* 언어별 그라데이션 */
+.language-btn.java {
+  background: linear-gradient(135deg, var(--java-start), var(--java-end));
+}
+.language-btn.c {
+  background: linear-gradient(135deg, var(--c-start), var(--c-end));
+}
+.language-btn.python {
+  background: linear-gradient(135deg, var(--py-start), var(--py-end));
+}
+
+/* 호버/액티브 효과 */
+.language-btn:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+.language-btn:active {
+  transform: translateY(-2px) scale(0.99);
+}
+
+/* 선택 상태 */
+.language-btn.selected {
+  outline: 3px solid rgba(255,255,255,0.12);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+}
+
+/* 리플 효과 */
+.language-btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255,255,255,0.35);
+  animation: ripple .6s linear;
+  pointer-events: none;
+}
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 코드 영역 강조(언어별 테마 애니메이션) */
+#code_segment {
+  transition: background .35s ease, border-color .35s ease, box-shadow .35s ease;
+  padding: 18px;
+}
+
+/* 들어오기 애니메이션(animate.css와 함께) */
+#code_display.animate__animated {
+  --animate-duration: 0.6s;
+}
+
+/* 언어별 코드 영역 색상 */
+#code_segment.lang-java {
+  background: linear-gradient(180deg, rgba(255,122,24,0.06), rgba(175,0,45,0.02));
+  border-color: rgba(175,0,45,0.12);
+  box-shadow: 0 8px 30px rgba(175,0,45,0.06);
+}
+#code_segment.lang-c {
+  background: linear-gradient(180deg, rgba(43,140,255,0.06), rgba(0,87,217,0.02));
+  border-color: rgba(0,87,217,0.12);
+  box-shadow: 0 8px 30px rgba(0,87,217,0.06);
+}
+#code_segment.lang-python {
+  background: linear-gradient(180deg, rgba(46,204,113,0.06), rgba(27,158,90,0.02));
+  border-color: rgba(27,158,90,0.12);
+  box-shadow: 0 8px 30px rgba(27,158,90,0.06);
+}
+
+/* 코드 텍스트 스타일 */
+#code_display {
+  white-space: pre-wrap;
+  font-family: 'Source Code Pro', Menlo, monospace;
+  font-size: 13px;
+  color: #222;
+}
+
+/* 에디터 테마 컨트롤 */
+.editor-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 12px 20px 0 20px;
+}
+.theme-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.theme-btn:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+
+/* 테마 변수: 밝은 / 눈보호(연노랑) / 어두운 / VSCode */
+#code_wrapper.editor-theme-light {
+  --code-bg: #ffffff;
+  --code-fg: #000000;
+  --code-border: #e6e6e6;
+  --gutter-bg: #f6f8fa;
+  background: var(--code-bg); /* wrapper 전체 배경 적용 */
+}
+#code_wrapper.editor-theme-solarized {
+  --code-bg: #fffde7;
+  --code-fg: #000000;
+  --code-border: #efe6b8;
+  --gutter-bg: #fff9e0;
+  background: var(--code-bg);
+}
+#code_wrapper.editor-theme-dark {
+  --code-bg: #0b0b0b;
+  --code-fg: #ffffff;
+  --code-border: #171717;
+  --gutter-bg: #0a0a0a;
+  background: var(--code-bg);
+}
+
+/* wrapper 전체 색상이 바뀌도록 우선 적용 (pre/code 영역 포함) */
+#code_wrapper.editor-theme-light #code_segment,
+#code_wrapper.editor-theme-solarized #code_segment,
+#code_wrapper.editor-theme-dark #code_segment,
+#code_wrapper.editor-theme-vscode #code_segment {
+  background: transparent; /* wrapper 이미 배경 가짐 -> 내부는 투명으로 */
+  border: 1px solid var(--code-border);
+}
+
+/* 코드 영역과 모든 하위 요소(Prism 토큰 포함)를 단일 색으로 강제 (VSCode 제외) */
+#code_wrapper.editor-theme-light #code_display,
+#code_wrapper.editor-theme-light #code_display * ,
+#code_wrapper.editor-theme-solarized #code_display,
+#code_wrapper.editor-theme-solarized #code_display * ,
+#code_wrapper.editor-theme-dark #code_display,
+#code_wrapper.editor-theme-dark #code_display * {
+  color: var(--code-fg) !important;
+  background: transparent !important;
+  text-shadow: none !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  opacity: 1 !important;
+}
+
+/* 보강: 코드 텍스트와 pre 영역 높이/여백 정리 */
+#code_wrapper #code_segment {
+  padding: 16px;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+/* VSCode (2017 Dark) 테마: Visual Studio 2017 Dark에 가깝게 조정
+    - wrapper 배경(약간 따뜻한 다크), 선택/라인 하이라이트, 커서, 스크롤바 등 세부 보정
+    - 토큰 팔레트는 2017 Dark의 느낌(키워드 파랑, 문자열 따뜻한 톤, 타입/클래스 청록 등)으로 지정 */
+#code_wrapper.editor-theme-vscode {
+  --code-bg: #1e1e1e;          /* VS2017 Dark 배경 */
+  --code-fg: #dcdcdc;         /* 기본 텍스트(약간 더 밝게) */
+  --code-border: #2b2b2b;
+  --gutter-bg: #252526;
+  --selection-bg: rgba(255,255,255,0.06);
+  --cursor-color: #aeafad;
+  --line-highlight: rgba(255,255,255,0.02);
+  --scrollbar-track: rgba(0,0,0,0.06);
+  --scrollbar-thumb: rgba(255,255,255,0.06);
+  --shadow-subtle: rgba(0,0,0,0.35);
+  background: var(--code-bg);
+}
+
+/* 내부 pre 영역은 투명으로 두고 wrapper에서 배경 처리 */
+#code_wrapper.editor-theme-vscode #code_segment {
+  background: transparent;
+  border: 1px solid var(--code-border);
+  padding: 16px;
+  border-radius: 10px;
+}
+
+/* 선택 범위 스타일 */
+#code_wrapper.editor-theme-vscode ::selection,
+#code_wrapper.editor-theme-vscode #code_display ::selection {
+  background: var(--selection-bg);
+}
+
+/* 줄 하이라이트(선택/포커스 시 사용 가능) */
+#code_wrapper.editor-theme-vscode .line-highlight {
+  background: var(--line-highlight);
+  display: block;
+  width: 100%;
+}
+
+/* 커서(단순 표현) */
+#code_wrapper.editor-theme-vscode .caret {
+  width: 1px;
+  background: var(--cursor-color);
+  display: inline-block;
+  height: 1em;
+}
+
+/* 스크롤바 스타일 (WebKit 기반 브라우저) */
+#code_wrapper.editor-theme-vscode #code_segment::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+#code_wrapper.editor-theme-vscode #code_segment::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+#code_wrapper.editor-theme-vscode #code_segment::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Prism 토큰 팔레트 — 2017 Dark에 가깝게 조정 */
+#code_wrapper.editor-theme-vscode .token.comment,
+#code_wrapper.editor-theme-vscode .token.prolog,
+#code_wrapper.editor-theme-vscode .token.doctype,
+#code_wrapper.editor-theme-vscode .token.cdata {
+  color: #6a9955; /* 녹색 계열 주석(읽기 쉬운 톤) */
+  font-style: italic;
+}
+#code_wrapper.editor-theme-vscode .token.punctuation { color: #d4d4d4; }
+
+/* 키워드(파랑), 제어문 등 */
+#code_wrapper.editor-theme-vscode .token.keyword,
+#code_wrapper.editor-theme-vscode .token.atrule {
+  color: #569cd6;
+  font-weight: 600;
+}
+
+/* 타입 / 클래스 (청록) */
+#code_wrapper.editor-theme-vscode .token.class-name,
+#code_wrapper.editor-theme-vscode .token.namespace {
+  color: #4ec9b0;
+  font-weight: 600;
+}
+
+/* 문자열 / 문자 (따뜻한 톤) */
+#code_wrapper.editor-theme-vscode .token.string,
+#code_wrapper.editor-theme-vscode .token.char,
+#code_wrapper.editor-theme-vscode .token.attr-value {
+  color: #ce9178;
+}
+
+/* 숫자 / 상수 */
+#code_wrapper.editor-theme-vscode .token.number,
+#code_wrapper.editor-theme-vscode .token.constant,
+#code_wrapper.editor-theme-vscode .token.boolean {
+  color: #b5cea8;
+}
+
+/* 함수 / 메서드명 (옐로우 계열) */
+#code_wrapper.editor-theme-vscode .token.function,
+#code_wrapper.editor-theme-vscode .token.method {
+  color: #dcdCAA; /* VS 스타일 옐로우 톤 */
+  font-weight: 500;
+}
+
+/* 연산자/기타 기호 */
+#code_wrapper.editor-theme-vscode .token.operator,
+#code_wrapper.editor-theme-vscode .token.entity,
+#code_wrapper.editor-theme-vscode .token.url {
+  color: #d4d4d4;
+}
+
+/* 정규식 / 중요표시 */
+#code_wrapper.editor-theme-vscode .token.regex,
+#code_wrapper.editor-theme-vscode .token.important {
+  color: #d16969;
+}
+
+/* 폰트/라인 높이 최적화 */
+#code_wrapper.editor-theme-vscode #code_display {
+  font-family: 'Consolas', 'Source Code Pro', Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  color: var(--code-fg);
+}
+
+/* 미세 그림자/경계 디테일(선명도 보강) */
+#code_wrapper.editor-theme-vscode {
+  box-shadow: 0 8px 20px var(--shadow-subtle);
+}
+
+/* Dark / Light / Solarized 테마에서 모든 토큰을 단일 색으로 강제 (VSCode 제외) */
+#code_wrapper.editor-theme-dark .token,
+#code_wrapper.editor-theme-dark .token.* {
+  color: var(--code-fg) !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  opacity: 1 !important;
+}
+#code_wrapper.editor-theme-light .token,
+#code_wrapper.editor-theme_light .token.* {
+  color: var(--code-fg) !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  opacity: 1 !important;
+}
+#code_wrapper.editor-theme-solarized .token,
+#code_wrapper.editor-theme-solarized .token.* {
+  color: var(--code-fg) !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  opacity: 1 !important;
+}
+
+/* 보완: 코드 텍스트와 토큰이 항상 --code-fg를 상속하도록 보장 */
+#code_wrapper.editor-theme-dark #code_display,
+#code_wrapper.editor-theme-light #code_display,
+#code_wrapper.editor-theme-solarized #code_display {
+  color: var(--code-fg) !important;
+  background: var(--code-bg) !important;
+}
+
+/* 테마 버튼 선택 표시(일반) - 선택된 버튼을 시각적으로 표시 */
+.theme-btn.selected {
+  outline: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
+
+/* VSCode 버튼 선택시 강화 스타일(별도) */
+.theme-btn.selected[data-theme="vscode"] {
+  outline: 2px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}

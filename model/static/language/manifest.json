@@ -1,0 +1,17 @@
+{
+  "java": [
+    "/static/language/java/arraySame.java",
+    "/static/language/java/generic.java",
+    "/static/language/java/inst.java",
+    "/static/language/java/override.java",
+    "/static/language/java/tryCatch.java",
+    "/static/language/java/upcasting.java"
+  ],
+  "c": [
+    "/static/language/c/switch.c",
+    "/static/language/c/test.c"
+  ],
+  "python": [
+    "/static/language/python/test.py"
+  ]
+}
